@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<title>ともしび — 呼吸で灯籠を流す</title>
+<meta name="description" content="押して吸って、離して吐く。夜の水面に灯籠を流しながら、ゆっくりした呼吸で心と体をゆるめる 3 分間のゲーム。">
+<meta name="theme-color" content="#070b1c">
+<meta property="og:title" content="ともしび — 呼吸で灯籠を流す">
+<meta property="og:description" content="押して吸って、離して吐く。夜の水面に灯籠を流す、3 分間の呼吸ゲーム。">
+<meta property="og:image" content="https://bubbleshaker.github.io/tomoshibi/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="sky" aria-hidden="true"></canvas>
+<div id="pad" hidden></div>
+
+<header id="hud">
+  <button id="quit" class="icon" aria-label="おわる" hidden>
+    <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <div id="bar" hidden><i></i></div>
+  <button id="mute" class="icon" aria-label="音のオン・オフ">
+    <svg viewBox="0 0 24 24"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path class="wave" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/><path class="cross" d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+  </button>
+</header>
+
+<p id="guide" aria-live="polite"></p>
+<p id="whisper"></p>
+
+<section id="title" class="panel">
+  <h1>ともしび</h1>
+  <p class="sub">押して吸って、離して吐く。<br>吐く息で、灯籠が水面を流れていきます。</p>
+
+  <div class="field">
+    <span class="lbl">時間</span>
+    <div class="seg" data-key="min">
+      <button data-v="1">1分</button><button data-v="3">3分</button><button data-v="5">5分</button>
+    </div>
+  </div>
+  <div class="field">
+    <span class="lbl">テンポ</span>
+    <div class="seg" data-key="tempo">
+      <button data-v="easy">はじめて<small>3秒・5秒</small></button>
+      <button data-v="normal">ふつう<small>4秒・6秒</small></button>
+      <button data-v="slow">ゆったり<small>5秒・7秒</small></button>
+    </div>
+  </div>
+  <div class="field">
+    <span class="lbl">遊び方</span>
+    <div class="seg" data-key="mode">
+      <button data-v="touch">指で<small>押す・離す</small></button>
+      <button data-v="eyes">目を閉じて<small>音に合わせる</small></button>
+    </div>
+  </div>
+  <div class="field">
+    <span class="lbl">いまの気分<small>（任意）</small></span>
+    <div class="moods" data-key="before"></div>
+  </div>
+
+  <button id="start" class="primary">はじめる</button>
+  <p id="streak" class="note"></p>
+  <p class="note fine">息苦しさやめまいを感じたら、いつもの呼吸へ。</p>
+</section>
+
+<section id="end" class="panel" hidden>
+  <h2>おつかれさまでした</h2>
+  <dl class="stats">
+    <div><dt>流した灯籠</dt><dd id="s-count"></dd></div>
+    <div><dt>吐く息の長さ</dt><dd id="s-out"></dd></div>
+    <div><dt>時間</dt><dd id="s-time"></dd></div>
+  </dl>
+  <div class="field">
+    <span class="lbl">いまの気分は？</span>
+    <div class="moods" data-key="after"></div>
+  </div>
+  <p id="mood-diff" class="note"></p>
+  <div class="row">
+    <button id="again" class="primary">もう一度</button>
+    <button id="back" class="ghost">はじめにもどる</button>
+  </div>
+  <p id="streak2" class="note"></p>
+</section>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

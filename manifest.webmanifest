@@ -1,0 +1,17 @@
+{
+  "name": "ともしび — 呼吸で灯籠を流す",
+  "short_name": "ともしび",
+  "description": "押して吸って、離して吐く。夜の水面に灯籠を流す呼吸のゲーム。",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#070b1c",
+  "theme_color": "#070b1c",
+  "lang": "ja",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "icon-180.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
