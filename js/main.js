@@ -326,9 +326,9 @@ function frame(now) {
     if (ses.el >= ses.T) ses.breath.stopAfter = true;
     $('#bar i').style.width = `${(scene.p * 100).toFixed(2)}%`;
   }
+  ses?.breath.update(step); // 1 回も呼吸せずに終わると、ここで ses が null になる
   if (ses) {
     const b = ses.breath;
-    b.update(step);
     const R = scene.ring;
     R.level = b.level;
     R.arc = b.state === 'in' ? Math.min(b.t / b.I, 1) : b.state === 'out' ? 1 - Math.min(b.t / b.E, 1) : 0;

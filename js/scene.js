@@ -32,6 +32,7 @@ export class Scene {
     this.dim = 0;
     this.dimTarget = 0;
     this.ring = { vis: 0, visTarget: 0, level: 0, arc: 0 };
+    this.moonPos = [.82, .13]; // 昇り切ったときの位置（画面に対する割合）
 
     const r = rng(7);
     this.stars = Array.from({ length: 240 }, () => ({
@@ -157,7 +158,7 @@ export class Scene {
 
     // 月：p=0.15 から昇り始める
     const mp = smooth(.12, 1, p);
-    const mx = W * .82, my = lerp(horizon + this.moonR * 1.2, H * .13, mp), mr = this.moonR;
+    const mx = W * this.moonPos[0], my = lerp(horizon + this.moonR * 1.2, H * this.moonPos[1], mp), mr = this.moonR;
     const moonUp = clamp((horizon - my) / (mr * 2), 0, 1);
     if (my - mr < horizon) {
       g.save();
