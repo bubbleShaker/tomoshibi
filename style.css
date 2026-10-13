@@ -79,7 +79,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
   animation: rise 1.4s ease both;
 }
-.panel.leave { animation: fall .9s ease both; }
+.panel.leave { animation: fall .9s ease both; pointer-events: none; }
 @keyframes rise { from { opacity: 0; transform: translate(-50%, 16px); } }
 @keyframes fall { to { opacity: 0; transform: translate(-50%, 16px); } }
 

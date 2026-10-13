@@ -1,5 +1,5 @@
 // オフラインでも遊べるように、同じサイトのファイルを保存しておく（取得できたら更新）
-const CACHE = 'tomoshibi-v1';
+const CACHE = 'tomoshibi-v2';
 const ASSETS = ['./', 'index.html', 'style.css', 'js/main.js', 'js/scene.js', 'js/audio.js', 'js/breath.js', 'icon.svg', 'icon-180.png', 'icon-512.png', 'manifest.webmanifest'];
 
 self.addEventListener('install', e => {
